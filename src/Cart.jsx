@@ -1,4 +1,4 @@
-const cart = () => {
+const Cart = () => {
   return (
     <>
       <div className="flex justify-center px-10">
@@ -45,4 +45,4 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;
