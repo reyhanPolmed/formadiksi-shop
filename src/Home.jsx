@@ -4,9 +4,11 @@ const Home = () => {
       <div className="flex justify-center">
         <div className="max-w-sm w-full bg-slate-400 flex flex-col gap-5">
           {/* hero */}
-          <div className="flex justify-center">
-            <div className="box-border w-[94%] h-[250px] bg-slate-300 mt-3 rounded-[30px]"></div>
-          </div>
+          <a href="/cart">
+            <div className="flex justify-center">
+              <div className="box-border w-[94%] h-[250px] bg-slate-300 mt-3 rounded-[30px]"></div>
+            </div>
+          </a>
           {/* category */}
           <div className="flex justify-center">
             <div className="w-[94%] flex box-border gap-5 justify-between">
