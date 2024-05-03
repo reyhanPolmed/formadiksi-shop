@@ -1,13 +1,16 @@
-import './App.css'
+import { BrowserRouter,Routes, Route } from "react-router-dom";
+import Home from "./home";
+import Cart from "./cart";
 
 function App() {
   return (
-    <>
-      <p className="font-bold text-2xl">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
