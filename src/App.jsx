@@ -2,6 +2,7 @@ import { BrowserRouter,Routes, Route } from "react-router-dom";
 import Home from "./Home.jsx";
 import Cart from "./Cart.jsx";
 import Contoh from "./Contoh.jsx";
+import "./App.css";
 
 function App() {
   return (
