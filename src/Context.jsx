@@ -41,19 +41,35 @@ const cartReducer = (state, action) => {
       localStorage.setItem("shopping-cart", JSON.stringify([]));
       return {
         ...state,
-        cart: []
+        cart: [],
       };
     // kasus lainnya
     default:
       return state;
-
+    case "DECREASE_CART":
+      // eslint-disable-next-line no-case-declarations
+      const productIndex = storedCart.findIndex(
+        (product) => product.name === action.payload.name
+      );
+      if (storedCart[productIndex].qty > 1) {
+        // If the product is already in the cart, update its quantity
+        storedCart[productIndex].qty -= 1;
+      } else if (storedCart[productIndex].qty === 1) {
+        // If the product is not in the cart, add it with quantity 1
+        storedCart.filter(
+          cartItem => cartItem.id !== action.payload.id
+        )
+      }
+      // Save the updated cart data back to localStorage
+      localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
+      return { ...state, cart: storedCart };
   }
 };
 
 // eslint-disable-next-line react/prop-types
 const Context = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, {
-    cart: JSON.parse(localStorage.getItem("shopping-cart")) || []
+    cart: JSON.parse(localStorage.getItem("shopping-cart")) || [],
   });
   return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
 };

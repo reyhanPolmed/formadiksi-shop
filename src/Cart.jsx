@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { dispatch, state } = CartState();
   const { cart } = state;
-  console.log(cart)
+  console.log(cart);
   const onProductRemove = (product) => {
     dispatch({
       type: "DELETE_FROM_CART",
@@ -16,6 +16,13 @@ const Cart = () => {
       type: "CLEAR_CART",
     });
   };
+
+  const DecreaseCart = (item) => {
+    dispatch({
+      type: "DECREASE_CART",
+      payload: item,
+    });
+  };
   return (
     <>
       <div className="flex justify-center font-poppins">
@@ -23,20 +30,22 @@ const Cart = () => {
           {/* Checkout */}
           <div className="flex mx-3 justify-between items-center">
             <div className="p-1 bg-slate-200 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5 8.25 12l7.5-7.5"
-                />
-              </svg>
+              <a href="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </a>
             </div>
             <h2 className="font-semibold">Checkout</h2>
             <span className="invisible">back</span>
@@ -62,74 +71,91 @@ const Cart = () => {
             </div>
 
             {/* cart */}
-            {
-        cart.length === 0 ? (
-          <div className="container font-sans py-24">
-            <p className="font-bold uppercase">your cart is currently empty</p>
-            <Link to="/">
-              <span className="py-2 px-5 w-[130px] text-xs rounded-md border block mt-5">Start Shopping</span>
-            </Link>
-
-          </div>
-        ) : (
-          cart.map((item, index) => (
-            <div key={index} className="flex justify-center">
-              <div className="box-border w-full h-[120px] bg-slate-300 mt-3 rounded-2xl">
-                <div className="flex h-full gap-4 box-border px-5">
-                  {/* gambar item */}
-                  <div className="h-full flex items-center">
-                    <img
-                      src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png"
-                      alt=""
-                      className="w-[120px] rounded-2xl"
-                    />
-                  </div>
-                  {/* detail item */}
-                  <div className="h-full flex flex-col justify-center gap-7 flex-1">
-                    {/* nama */}
-                    <div className="flex justify-between">
-                      <span className="text-sm">RiceBowl</span>
-                      {/* remove logo */}
-                      <div className="pointer" onClick={()=> {onProductRemove(item)}}>
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="15"
-                            height="15"
-                            fill="currentColor"
-                            className="bi bi-trash"
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                          </svg>
-                        </span>
+            {cart.length === 0 ? (
+              <div className="container font-sans py-24">
+                <p className="font-bold uppercase">
+                  your cart is currently empty
+                </p>
+                <Link to="/">
+                  <span className="py-2 px-5 w-[130px] text-xs rounded-md border block mt-5">
+                    Start Shopping
+                  </span>
+                </Link>
+              </div>
+            ) : (
+              cart.map((item, index) => (
+                <div key={index} className="flex justify-center">
+                  <div className="box-border w-full h-[120px] bg-slate-300 mt-3 rounded-2xl">
+                    <div className="flex h-full gap-4 box-border px-5">
+                      {/* gambar item */}
+                      <div className="h-full flex items-center">
+                        <img
+                          src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png"
+                          alt=""
+                          className="w-[120px] rounded-2xl"
+                        />
                       </div>
-                    </div>
+                      {/* detail item */}
+                      <div className="h-full flex flex-col justify-center gap-7 flex-1">
+                        {/* nama */}
+                        <div className="flex justify-between">
+                          <span className="text-sm">{item.name}</span>
+                          {/* remove logo */}
+                          <div
+                            className="pointer"
+                            onClick={() => {
+                              onProductRemove(item);
+                            }}
+                          >
+                            <span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="15"
+                                height="15"
+                                fill="currentColor"
+                                className="bi bi-trash"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
 
-                    {/* price */}
-                    <div className="flex justify-between">
-                      <p className="text-sm">Rp. </p>
-                      <div className="flex justify-between">
-                        {/* button tambah-kurang */}
-                        <p className="px-1 border text-xs rounded-lg">
-                          <button className="mr-2 p-1">+</button>1
-                          <button className="ml-2 p-1">-</button>
-                        </p>
+                        {/* price */}
+                        <div className="flex justify-between">
+                          <p className="text-sm">Rp. </p>
+                          <div className="flex justify-between">
+                            {/* button tambah-kurang */}
+                            <p className="px-1 border text-xs rounded-lg">
+                              <button className="mr-2 p-1">+</button>{item.qty}
+                              <button
+                                className="ml-2 p-1"
+                                onClick={() => {
+                                  DecreaseCart(item);
+                                }}
+                              >
+                                -
+                              </button>
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))
-        )
-      }
-            
+              ))
+            )}
           </div>
 
           {/* clear cart */}
-          <button className="p-2 px-5 border w-[120px] text-xs rounded-md bg-slate-500 mx-3" onClick={()=> {onProductClear()}}>
+          <button
+            className="p-2 px-5 border w-[120px] text-xs rounded-md bg-slate-500 mx-3"
+            onClick={() => {
+              onProductClear();
+            }}
+          >
             Clear Cart
           </button>
 
