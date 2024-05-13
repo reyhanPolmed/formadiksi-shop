@@ -97,9 +97,9 @@ const Cart = () => {
                       {/* gambar item */}
                       <div className="h-full flex items-center">
                         <img
-                          src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png"
+                          src={item.img}
                           alt=""
-                          className="w-[120px] rounded-2xl"
+                          className="w-[120px] h-[85px] rounded-2xl"
                         />
                       </div>
                       {/* detail item */}
