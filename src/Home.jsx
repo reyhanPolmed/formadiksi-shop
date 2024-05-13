@@ -1,4 +1,3 @@
-import goreng from "./assets/gorengan.png"
 import { Products } from "./constant/index.jsx";
 import { CartState } from "./Context.jsx";
 const Home = () => {
@@ -25,22 +24,22 @@ const Home = () => {
           <div className="flex justify-center">
             <div className="w-[94%] flex box-border gap-5 justify-between">
               <div className="h-[74px] bg-slate-200 flex flex-col justify-center items-center rounded-[10px] overflow-hidden">
-                <div>
-                  <img src={goreng} alt="" />
+                <div className="w-[65px]">
+                  <h1>logo</h1>
                 </div>
-                <span className="text-sm">table</span>
+                <span className="text-sm">judul</span>
               </div>
               <div className="h-[74px] bg-slate-200 px-5 flex flex-col justify-center items-center rounded-[10px]">
                 <h1>logo</h1>
-                <span className="text-sm">table</span>
+                <span className="text-sm">judul</span>
               </div>
               <div className="h-[74px] bg-slate-200 px-5 flex flex-col justify-center items-center rounded-[10px]">
                 <h1>logo</h1>
-                <span className="text-sm">table</span>
+                <span className="text-sm">judul</span>
               </div>
               <div className="h-[74px] bg-slate-200 px-5 flex flex-col justify-center items-center rounded-[10px]">
                 <h1>logo</h1>
-                <span className="text-sm">table</span>
+                <span className="text-sm">judul</span>
               </div>
             </div>
           </div>
@@ -92,7 +91,7 @@ const Home = () => {
                     </div>
                     {/* gambar */}
                     <div className="flex-1 flex justify-center">
-                      <img src={product.img} alt="" className="w-[250px]"/>
+                      <img src={product.img} alt="" className="w-[250px] h-[165px] rounded-2xl"/>
                     </div>
                     {/* harga */}
                     <div className="flex items-center">
