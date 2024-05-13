@@ -23,6 +23,13 @@ const Cart = () => {
       payload: item,
     });
   };
+
+  const IncreaseCart = (item) => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: item,
+    });
+  };
   return (
     <>
       <div className="flex justify-center font-poppins">
@@ -129,7 +136,15 @@ const Cart = () => {
                           <div className="flex justify-between">
                             {/* button tambah-kurang */}
                             <p className="px-1 border text-xs rounded-lg">
-                              <button className="mr-2 p-1">+</button>{item.qty}
+                              <button
+                                className="mr-2 p-1"
+                                onClick={() => {
+                                  IncreaseCart(item);
+                                }}
+                              >
+                                +
+                              </button>
+                              {item.qty}
                               <button
                                 className="ml-2 p-1"
                                 onClick={() => {
