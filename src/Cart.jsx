@@ -1,9 +1,20 @@
+import { useEffect,useState } from "react";
 import { CartState } from "./Context";
 import { Link } from "react-router-dom";
 const Cart = () => {
+  const [nama, setNama] = useState('')
+  const [alamat, setAlamat] = useState('')
+
   const { dispatch, state } = CartState();
-  const { cart } = state;
+  const { cart, cartTotalAmount } = state;
   console.log(cart);
+
+  useEffect(() => {
+    dispatch({
+      type: "GET_TOTAL",
+    });
+  }, [cart]);
+
   const onProductRemove = (product) => {
     dispatch({
       type: "DELETE_FROM_CART",
@@ -30,10 +41,45 @@ const Cart = () => {
       payload: item,
     });
   };
+
+  const CheckoutProduct = () => {
+    if (cart.length === 0) {
+      console.error("Error: Product data not loaded.");
+      return;
+    }
+
+    // Mendapatkan nama produk
+
+    // Membuat pesan WhatsApp
+    let message = "Halo! Saya ingin membuat pesanan \n";
+
+    // informasi pemesan
+    message += `nama: ${nama} \n`;
+    message += `alamat: ${alamat} \n`;
+
+    // Menambahkan nama produk ke pesan
+    message += "\nDaftar Pesanan: \n";
+    message += cart
+      .map(
+        (item) =>
+          `-${item.name} ${item.deskripsi} x ${item.qty} : Rp ${
+            item.price * item.qty
+          } \n`
+      )
+      .join("");
+
+    // Menambahkan total harga pesanan ke pesan
+    message += "\nTotal Yang Harus di Bayar : Rp " + cartTotalAmount;
+
+    // Mengarahkan ke aplikasi WhatsApp dengan pesan otomatis
+    window.location.href = `https://wa.me/6282383272872/?text=${encodeURIComponent(
+      message
+    )}`;
+  };
   return (
     <>
       <div className="flex justify-center font-poppins">
-        <div className="max-w-sm w-full flex flex-col gap-8 border py-5">
+        <div className="max-w-sm w-full flex flex-col gap-8 border py-5 min-h-screen">
           {/* Checkout */}
           <div className="flex mx-3 justify-between items-center">
             <div className="p-1 bg-slate-200 rounded-full">
@@ -58,7 +104,8 @@ const Cart = () => {
             <span className="invisible">back</span>
           </div>
 
-          <div className="flex flex-col mx-3">
+          {/* cart */}
+          <div className="flex flex-col mx-3 flex-1">
             <div className="flex gap-5 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +113,7 @@ const Cart = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -77,36 +124,35 @@ const Cart = () => {
               <p className="text-sm font-bold">Store</p>
             </div>
 
-            {/* cart */}
             {cart.length === 0 ? (
-              <div className="container font-sans py-24">
+              <div className="font-sans flex justify-center h-full items-center">
                 <p className="font-bold uppercase">
                   your cart is currently empty
                 </p>
-                <Link to="/">
-                  <span className="py-2 px-5 w-[130px] text-xs rounded-md border block mt-5">
-                    Start Shopping
-                  </span>
-                </Link>
               </div>
             ) : (
               cart.map((item, index) => (
                 <div key={index} className="flex justify-center">
-                  <div className="box-border w-full h-[120px] bg-slate-300 mt-3 rounded-2xl">
-                    <div className="flex h-full gap-4 box-border px-5">
+                  <div className="box-border w-full h-[120px] border mt-3 rounded-2xl shadow">
+                    <div className="flex h-full gap-4 box-border px-5 ">
                       {/* gambar item */}
-                      <div className="h-full flex items-center">
+                      <div className="h-full flex items-center cursor-pointer">
                         <img
                           src={item.img}
-                          alt=""
-                          className="w-[120px] h-[85px] rounded-2xl"
+                          alt=""    
+                          className="w-[120px] h-[85px] rounded-xl"
                         />
                       </div>
                       {/* detail item */}
                       <div className="h-full flex flex-col justify-center gap-7 flex-1">
                         {/* nama */}
                         <div className="flex justify-between">
-                          <span className="text-sm">{item.name}</span>
+                          <div className="flex flex-col">
+                            <span className="text-sm font-bold">
+                              {item.name}
+                            </span>
+                            <i className="text-[10px]">{item.deskripsi}</i>
+                          </div>
                           {/* remove logo */}
                           <div
                             className="pointer"
@@ -132,10 +178,10 @@ const Cart = () => {
 
                         {/* price */}
                         <div className="flex justify-between">
-                          <p className="text-sm">Rp. </p>
+                          <p className="text-sm">Rp. {item.price}</p>
                           <div className="flex justify-between">
                             {/* button tambah-kurang */}
-                            <p className="px-1 border text-xs rounded-lg">
+                            <p className="px-1 border text-xs rounded-lg shadow-sm">
                               <button
                                 className="mr-2 p-1"
                                 onClick={() => {
@@ -165,14 +211,24 @@ const Cart = () => {
           </div>
 
           {/* clear cart */}
-          <button
-            className="p-2 px-5 border w-[120px] text-xs rounded-md bg-slate-500 mx-3"
-            onClick={() => {
-              onProductClear();
-            }}
-          >
-            Clear Cart
-          </button>
+          {cart.length === 0 ? (
+            <Link to="/">
+              <span className="py-2 px-5 w-[140px] text-xs rounded-md border block mx-3 shadow-sm">
+                Start Shopping
+              </span>
+            </Link>
+          ) : (
+            <button
+              className="p-2 px-5 border w-[120px] text-xs rounded-md mx-3 font-semibold shadow-sm"
+              onClick={() => {
+                onProductClear();
+              }}
+            >
+              Clear Cart
+            </button>
+          )}
+
+          {/* informasi pemesanan */}
 
           {/* Alamat Pengantaran */}
           <div className="flex flex-col mx-3 gap-1">
@@ -188,19 +244,31 @@ const Cart = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                 />
               </svg>
+
               <span className="text-sm font-bold">
-                Alamat Pengantaran
+                Informasi Pengguna
                 <sup> &#40;hanya lingkungann politeknik negeri medan&#41;</sup>
               </span>
             </div>
-            <input
-              type="text"
-              placeholder="masukkan alamat pengantaran"
-              className="px-2 py-2 outline-none border rounded-md text-sm"
-            />
+            <div className="flex flex-col gap-3">
+              {/* nama pemesan */}
+              <input
+                type="text"
+                placeholder="masukkan Nama Anda"
+                className="px-3 py-2 outline-none border rounded-md text-sm"
+                onChange={(e) => setNama(e.target.value)}
+              />
+              {/* alamat pemesan */}
+              <input
+                type="text"
+                placeholder="masukkan alamat pengantaran"
+                className="px-3 py-2 outline-none border rounded-md text-sm"
+                onChange={(e) => setAlamat(e.target.value)}
+              />
+            </div>
           </div>
 
           {/* cart detail */}
@@ -225,24 +293,33 @@ const Cart = () => {
             <div className="flex flex-col bg-white rounded-md  pt-3 border">
               {/* daftar pesanan */}
               <div className="flex flex-col gap-1">
-                <div className="text-sm px-4 flex">
-                  <p className="flex-1">RISOL MAYO :</p>
-                  <p>Rp 10000</p>
-                </div>
+                {cart.map((item, index) => (
+                  <div key={index} className="text-sm px-3 flex">
+                    <p className="flex-1">
+                      {item.name} x {item.qty} :
+                    </p>
+                    <p>Rp {item.price * item.qty}</p>
+                  </div>
+                ))}
               </div>
               {/* total */}
-              <div className="text-sm p-4 ">
+              <div className="text-sm py-4 px-3">
                 <div className="border-t flex pt-2">
                   <p className="flex-1">TOTAL PESANAN : </p>
-                  <p>Rp. 20000</p>
+                  <p>Rp {cartTotalAmount}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* button buy */}
-          <div className="h-8 bg-black flex justify-center items-center mx-3 box-border rounded-md">
-            <p className="text-white font-bold text-sm ">BELI</p>
+          <div
+            className="h-8 bg-black flex justify-center items-center mx-3 box-border rounded-md cursor-pointer"
+            onClick={() => {
+              CheckoutProduct();
+            }}
+          >
+            <p className="text-white font-bold text-sm">BELI</p>
           </div>
         </div>
       </div>

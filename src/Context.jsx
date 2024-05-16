@@ -63,6 +63,21 @@ const cartReducer = (state, action) => {
       // Save the updated cart data back to localStorage
       localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
       return { ...state, cart: storedCart };
+      case "GET_TOTAL":
+        // eslint-disable-next-line no-case-declarations
+        let { total } = storedCart.reduce((cartTotal, cartItem) => {
+          const { price, qty } = cartItem
+          const itemTotal = price * qty
+  
+          cartTotal.total += itemTotal
+  
+          return cartTotal;
+        }, {
+          total: 0,
+          quantity: 0
+        })
+
+        return { ...state, cartTotalAmount: total };
   }
 };
 
@@ -70,6 +85,7 @@ const cartReducer = (state, action) => {
 const Context = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     cart: JSON.parse(localStorage.getItem("shopping-cart")) || [],
+    cartTotalAmount: 0
   });
   return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
 };

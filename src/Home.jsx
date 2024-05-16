@@ -2,7 +2,7 @@ import { Products } from "./constant/index.jsx";
 import { CartState } from "./Context.jsx";
 const Home = () => {
   const { dispatch, state } = CartState();
-  console.log(state)
+  console.log(state);
   const addProductToCart = (product) => {
     dispatch({
       type: "ADD_TO_CART",
@@ -13,13 +13,39 @@ const Home = () => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="max-w-sm w-full bg-slate-400 flex flex-col gap-5">
+        <div className="max-w-sm w-full flex flex-col gap-5 border">
           {/* hero */}
-          <a href="/cart">
             <div className="flex justify-center">
-              <div className="box-border w-[94%] h-[250px] bg-slate-300 mt-3 rounded-[30px]"></div>
+              <div className="box-border w-[94%] h-[250px] bg-slate-100 mt-3 rounded-[30px] ">
+                <div className="flex justify-between pt-5 px-5">
+                  <h1 className="text-[40px] w-60">
+                    <span className="font-bold">Formadiksi</span> sweet shop
+                    <p className="text-xs">
+                      Setiap hidangan,sebuah petualangan rasa yang menggugah!
+                    </p>
+                  </h1>
+                  <a href="/cart" className="w-8 h-8 flex justify-center items-center border shadow-sm rounded-xl cursor-pointer bg-white mt-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <div className="px-5 mt-3">
+                  <input type="text" className="outline-none w-full p-3 px-10 bg-slate-300 rounded-xl"/>
+                </div>
+              </div>
             </div>
-          </a>
           {/* category */}
           <div className="flex justify-center">
             <div className="w-[94%] flex box-border gap-5 justify-between">
@@ -45,16 +71,21 @@ const Home = () => {
           </div>
           {/* product */}
           <div className="flex justify-center">
-            <div className="box-border w-[94%] h-full bg-slate-300 flex flex-col ">
+            <div className="box-border w-[94%] h-full flex flex-col ">
               <div className="flex flex-col w-full h-full gap-5 pb-10">
-                { Products.map((product, index) => (
-                    <div key={index} className="w-full h-[300px] bg-slate-100 rounded-[30px] flex flex-col p-5 gap-2 box-border">
+                {Products.map((product, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-[300px] rounded-[30px] flex flex-col p-5 gap-2 box-border border shadow"
+                  >
                     {/* judul */}
                     <div className="flex items-center">
-                      <span className="font-semibold text-[25px]">{product.name}</span>
+                      <span className="font-semibold text-[25px]">
+                        {product.name}
+                      </span>
                       <div className="flex-1 flex justify-end gap-2">
                         {/* save */}
-                        <div className="w-8 h-8 flex justify-center items-center bg-slate-500 rounded-xl">
+                        <div className="w-8 h-8 flex justify-center items-center border shadow rounded-xl cursor-pointer">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -71,7 +102,7 @@ const Home = () => {
                           </svg>
                         </div>
                         {/* keranjang */}
-                        <div className="w-8 h-8 flex justify-center items-center bg-slate-500 rounded-xl">
+                        <div className="w-8 h-8 flex justify-center items-center border shadow rounded-xl cursor-pointer">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -91,25 +122,33 @@ const Home = () => {
                     </div>
                     {/* gambar */}
                     <div className="flex-1 flex justify-center">
-                      <img src={product.img} alt="" className="w-[250px] h-[165px] rounded-2xl"/>
+                      <img
+                        src={product.img}
+                        alt=""
+                        className="w-full h-[175px] rounded-[30px] shadow"
+                      />
                     </div>
                     {/* harga */}
                     <div className="flex items-center">
-                      <span className="font-bold text-[25px] flex-1">
-                        {product.price}
+                      <span className="font-bold text-[20px] flex-1">
+                        Rp {product.price}
                       </span>
-                      <button className="px-8 py-1 bg-blue-500 text-white rounded-xl font-semibold" onClick={() => {
-                            addProductToCart(product)}}>
-                        Buy Now
+                      <button
+                        className="px-8 py-1 bg-black text-white rounded-xl font-semibold"
+                        onClick={() => {
+                          addProductToCart(product);
+                        }}
+                      >
+                        add to cart
                       </button>
                     </div>
                   </div>
-                ))}   
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 };
