@@ -1,10 +1,11 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { CartState } from "./Context";
 import { Link } from "react-router-dom";
 const Cart = () => {
-  const [nama, setNama] = useState('')
-  const [alamat, setAlamat] = useState('')
-
+  const [nama, setNama] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [pesanError, setPesanError] = useState("");
+  const [pesanStok, setPesanStok] = useState("");
   const { dispatch, state } = CartState();
   const { cart, cartTotalAmount } = state;
   console.log(cart);
@@ -42,9 +43,27 @@ const Cart = () => {
     });
   };
 
+  // const checkProduct = (item) => {
+  //   let isProductInCart = item.status == "Habis";
+  //   if (isProductInCart) {
+  //     return 
+  //   }
+  // };
+
   const CheckoutProduct = () => {
+    const stok = cart.filter((item) => item.status == "Habis").length > 0;
+    if(stok) {
+      setPesanStok("Mohon periksa stok Barang yang anda beli")
+      return
+    } else {
+      setPesanStok("")
+    }
+
     if (cart.length === 0) {
       console.error("Error: Product data not loaded.");
+      return;
+    } else if (!nama && !alamat) {
+      setPesanError("lengkapi data anda!");
       return;
     }
 
@@ -125,88 +144,95 @@ const Cart = () => {
             </div>
 
             {cart.length === 0 ? (
-              <div className="font-sans flex justify-center h-full items-center">
+              <div className="font-sans flex justify-center h-full items-center mt-4">
                 <p className="font-bold uppercase">
                   your cart is currently empty
                 </p>
               </div>
             ) : (
-              cart.map((item, index) => (
-                <div key={index} className="flex justify-center">
-                  <div className="box-border w-full h-[120px] border mt-3 rounded-2xl shadow">
-                    <div className="flex h-full gap-4 box-border px-5 ">
-                      {/* gambar item */}
-                      <div className="h-full flex items-center cursor-pointer">
-                        <img
-                          src={item.img}
-                          alt=""    
-                          className="w-[120px] h-[85px] rounded-xl"
-                        />
-                      </div>
-                      {/* detail item */}
-                      <div className="h-full flex flex-col justify-center gap-7 flex-1">
-                        {/* nama */}
-                        <div className="flex justify-between">
-                          <div className="flex flex-col">
-                            <span className="text-sm font-bold">
-                              {item.name}
-                            </span>
-                            <i className="text-[10px]">{item.deskripsi}</i>
-                          </div>
-                          {/* remove logo */}
-                          <div
-                            className="pointer"
-                            onClick={() => {
-                              onProductRemove(item);
-                            }}
-                          >
-                            <span>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="15"
-                                height="15"
-                                fill="currentColor"
-                                className="bi bi-trash"
-                                viewBox="0 0 16 16"
-                              >
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                              </svg>
-                            </span>
-                          </div>
+              <div>
+                <p className="text-sm text-red-700 flex justify-center mt-2">{pesanStok}</p>
+                {              
+                cart.map((item, index) => (
+                <div key={index}>
+                  <div className="flex justify-center">
+                    <div className="box-border w-full h-[120px] border mt-3 rounded-2xl shadow">
+                      <div className="flex h-full gap-4 box-border px-5 ">
+                        {/* gambar item */}
+                        <div className="h-full flex items-center cursor-pointer">
+                          <img
+                            src={item.img}
+                            alt=""
+                            className="w-[120px] h-[85px] rounded-xl"
+                          />
                         </div>
-
-                        {/* price */}
-                        <div className="flex justify-between">
-                          <p className="text-sm">Rp. {item.price}</p>
+                        {/* detail item */}
+                        <div className="h-full flex flex-col justify-center gap-7 flex-1">
+                          {/* nama */}
                           <div className="flex justify-between">
-                            {/* button tambah-kurang */}
-                            <p className="px-1 border text-xs rounded-lg shadow-sm">
-                              <button
-                                className="mr-2 p-1"
-                                onClick={() => {
-                                  IncreaseCart(item);
-                                }}
-                              >
-                                +
-                              </button>
-                              {item.qty}
-                              <button
-                                className="ml-2 p-1"
-                                onClick={() => {
-                                  DecreaseCart(item);
-                                }}
-                              >
-                                -
-                              </button>
-                            </p>
+                            <div className="flex flex-col">
+                              <span className="text-sm font-bold">
+                                {item.name} <span className={`text-xs font-normal ${item.status == "Habis" ? "text-red-700" : "text-green-700"} font-bold`}>&#40;{item.status} &#41;</span>
+                              </span>
+                              
+                              <i className="text-[10px]">{item.deskripsi}</i>
+                            </div>
+                            {/* remove logo */}
+                            <div
+                              className="pointer"
+                              onClick={() => {
+                                onProductRemove(item);
+                              }}
+                            >
+                              <span>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="15"
+                                  height="15"
+                                  fill="currentColor"
+                                  className="bi bi-trash"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* price */}
+                          <div className="flex justify-between">
+                            <p className="text-sm">Rp. {item.price}</p>
+                            <div className="flex justify-between">
+                              {/* button tambah-kurang */}
+                              <p className="px-1 border text-xs rounded-lg shadow-sm">
+                                <button
+                                  className="mr-2 p-1"
+                                  onClick={() => {
+                                    IncreaseCart(item);
+                                  }}
+                                >
+                                  +
+                                </button>
+                                {item.qty}
+                                <button
+                                  className="ml-2 p-1"
+                                  onClick={() => {
+                                    DecreaseCart(item);
+                                  }}
+                                >
+                                  -
+                                </button>
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))
+              ))}
+              </div>
             )}
           </div>
 
@@ -253,6 +279,7 @@ const Cart = () => {
                 <sup> &#40;hanya lingkungann politeknik negeri medan&#41;</sup>
               </span>
             </div>
+            <div className="text-sm text-red-700">{pesanError}</div>
             <div className="flex flex-col gap-3">
               {/* nama pemesan */}
               <input

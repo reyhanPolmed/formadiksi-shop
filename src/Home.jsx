@@ -185,7 +185,7 @@ const Home = () => {
                 {items.map((product, index) => (
                   <div
                     key={index}
-                    className="w-full h-[300px] rounded-[30px] flex flex-col p-5 gap-2 box-border border shadow"
+                    className="w-full h-[350px] rounded-[30px] flex flex-col p-5 gap-2 box-border border shadow"
                   >
                     {/* judul */}
                     <div className="flex items-center">
@@ -236,6 +236,10 @@ const Home = () => {
                         alt=""
                         className="w-full h-[175px] rounded-[30px] shadow"
                       />
+                    </div>
+                    {/* status */}
+                    <div>
+                      <span className={`${product.status == "Tersedia" ? "text-green-800" : "text-red-700"} font-bold`}>{product.status}</span>
                     </div>
                     {/* harga */}
                     <div className="flex items-center">
