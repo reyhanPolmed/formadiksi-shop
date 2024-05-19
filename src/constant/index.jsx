@@ -30,7 +30,7 @@ export const Products = [
         id : 4,
         name : "Dadar",
         deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
         price : "5000",
         category: "gorengan",
         status: "Tersedia"
@@ -43,15 +43,5 @@ export const Products = [
         price : "5000",
         category: "gorengan",
         status: "Tersedia"
-    },
- 
-    {
-        id : 7,
-        name : "ricebowl",
-        deskripsi : "daging ayam",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715612936/ricebowl_chbdty.jpg",
-        price : "12000",
-        category: "asia",
-        status: "Habis"
     },
 ]

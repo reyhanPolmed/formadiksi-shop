@@ -53,7 +53,7 @@ const Cart = () => {
   const CheckoutProduct = () => {
     const stok = cart.filter((item) => item.status == "Habis").length > 0;
     if(stok) {
-      setPesanStok("Mohon periksa stok Barang yang anda beli")
+      setPesanStok("Mohon periksa stok item yang anda beli")
       return
     } else {
       setPesanStok("")
@@ -91,7 +91,7 @@ const Cart = () => {
     message += "\nTotal Yang Harus di Bayar : Rp " + cartTotalAmount;
 
     // Mengarahkan ke aplikasi WhatsApp dengan pesan otomatis
-    window.location.href = `https://wa.me/6282383272872/?text=${encodeURIComponent(
+    window.location.href = `https://wa.me/6285372117078/?text=${encodeURIComponent(
       message
     )}`;
   };
