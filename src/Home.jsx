@@ -189,7 +189,7 @@ const Home = () => {
                   >
                     {/* judul */}
                     <div className="flex items-center">
-                      <span className="font-semibold text-[25px]">
+                      <span className="font-semibold text-[22px]">
                         {product.name}
                       </span>
                       <div className="flex-1 flex justify-end gap-2">
