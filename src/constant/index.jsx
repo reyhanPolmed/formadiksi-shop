@@ -24,7 +24,7 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        status: "Habis"
+        status: "Tersedia"
     },
     {   
         id : 4,
