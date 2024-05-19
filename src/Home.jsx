@@ -252,7 +252,7 @@ const Home = () => {
                           buyProduct(product);
                         }}
                       >
-                        add to cart
+                        Beli Sekarang
                       </button>
                     </div>
                   </div>

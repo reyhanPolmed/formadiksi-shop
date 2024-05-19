@@ -10,7 +10,7 @@ export const Products = [
     },
     {   
         id : 2,
-        name : "tahu",
+        name : "Tahu Isi",
         deskripsi : "(3pcs Rp 5.000)",
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
@@ -19,7 +19,7 @@ export const Products = [
     },
     {   
         id : 3,
-        name : "tempe",
+        name : "Bakwan",
         deskripsi : "(3pcs Rp 5.000)",
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
@@ -28,7 +28,7 @@ export const Products = [
     },
     {   
         id : 4,
-        name : "bakwan",
+        name : "Dadar",
         deskripsi : "(3pcs Rp 5.000)",
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
@@ -44,15 +44,7 @@ export const Products = [
         category: "gorengan",
         status: "Tersedia"
     },
-    {   
-        id : 6,
-        name : "piscok",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category: "gorengan",
-        status: "Habis"
-    },
+ 
     {
         id : 7,
         name : "ricebowl",
