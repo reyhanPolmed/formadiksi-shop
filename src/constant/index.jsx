@@ -6,7 +6,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category : "gorengan",
-        status: "Tersedia"
+        // status: "Tersedia",
+        status: "Habis",
     },
     {   
         id : 2,
@@ -15,7 +16,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        status: "Tersedia"
+        // status: "Tersedia",
+        status: "Habis"
     },
     {   
         id : 3,
@@ -24,7 +26,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        status: "Tersedia"
+        // status: "Tersedia",
+        status: "Habis",
     },
     {   
         id : 4,
@@ -33,7 +36,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
         price : "5000",
         category: "gorengan",
-        status: "Tersedia"
+        // status: "Tersedia",
+        status: "Habis",
     },
     {   
         id : 5,
@@ -42,6 +46,7 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        status: "Tersedia"
+        // status: "Tersedia",
+        status: "Habis"
     },
 ]
