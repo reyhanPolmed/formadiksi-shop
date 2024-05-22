@@ -6,8 +6,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category : "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
+        status: "Tersedia",
+        // status: "Habis",
     },
     {   
         id : 2,
@@ -16,8 +16,8 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis"
+        status: "Tersedia",
+        // status: "Habis"
     },
     {   
         id : 3,
@@ -26,19 +26,29 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
+        status: "Tersedia",
+        // status: "Habis",
     },
     {   
         id : 4,
-        name : "Dadar",
+        name : "Pisang Goreng",
         deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
+        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
+        status: "Tersedia",
+        // status: "Habis",
     },
+    // {   
+    //     id : 4,
+    //     name : "Dadar",
+    //     deskripsi : "(3pcs Rp 5.000)",
+    //     img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
+    //     price : "5000",
+    //     category: "gorengan",
+    //     // status: "Tersedia",
+    //     status: "Habis",
+    // },
     {   
         id : 5,
         name : "Gorengan campur",
@@ -46,7 +56,7 @@ export const Products = [
         img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
         price : "5000",
         category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis"
+        status: "Tersedia",
+        // status: "Habis"
     },
 ]
