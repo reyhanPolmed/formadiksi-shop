@@ -248,7 +248,7 @@ const Pulsa = () => {
       <div className="flex justify-center">
         <div
           className={`fixed max-w-sm w-full border min-h-screen  ${
-            alert ? "top-0" : "-top-full"
+            alert ? "bottom-0" : "-bottom-full"
           }  transition-all bg-white`}
         >
           <Alert setAlert={handleAlert} />
