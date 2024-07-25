@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { PulsaTelkomsel, PulsaAxis } from "./constant";
 import { ThreeDots } from "react-loader-spinner";
+import Alert from "./component/Alert";
 const Pulsa = () => {
   const [click, setClick] = useState(false);
+  const [alert, setAlert] = useState(false);
   const [contoh, setContoh] = useState({});
   const [noHp, setNoHp] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,16 @@ const Pulsa = () => {
     setClick(!click);
     setContoh(item);
   };
+
+  const handleClickAlert = () => {
+    setAlert(!alert);
+  };
+
+  const handleAlert = () => {
+    setAlert(false);
+  };
+
+  console.log("alert", alert);
 
   let pilihanPulsa;
   let logoProvider;
@@ -31,7 +43,7 @@ const Pulsa = () => {
             {validNoHp
               ? PulsaTelkomsel.map((item, index) => (
                   <div
-                    className="flex gap-1 py-4 border-b border-slate-400 mx-1"
+                    className="flex gap-1 py-4 border-b border-slate-400 mx-1 cursor-pointer"
                     onClick={() => handleClick({ item })}
                     key={index}
                   >
@@ -64,7 +76,7 @@ const Pulsa = () => {
             {validNoHp
               ? PulsaAxis.map((item, index) => (
                   <div
-                    className="flex gap-4 py-4 border-b border-slate-400 mx-1 items-center"
+                    className="flex gap-4 py-4 border-b border-slate-400 mx-1 items-center cursor-pointer"
                     onClick={() => handleClick({ item })}
                     key={index}
                   >
@@ -93,7 +105,7 @@ const Pulsa = () => {
 
   const handleChange = (e) => {
     setNoHp(e.target.value);
-    setLoading(true)
+    setLoading(true);
     // Mulai timeout baru setiap kali input berubah
     setTimeout(() => {
       setLoading(false);
@@ -101,129 +113,148 @@ const Pulsa = () => {
   };
 
   let content = (
-    <div className="flex justify-center">
-      {/* header input */}
-      <div className="fixed max-w-sm w-full flex flex-col gap-5 bg-white">
-        {/* navbar */}
-        <div className="flex justify-between px-2 h-10 items-center bg-blue-600 text-white font-bold">
-          <div className="flex gap-4 items-center">
-          <a href="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              className="w-5"
+    <>
+      <div className="flex justify-center">
+        {/* header input */}
+        <div className="fixed max-w-sm w-full flex flex-col gap-5 bg-white">
+          {/* navbar */}
+          <div className="flex justify-between px-2 h-10 items-center bg-blue-600 text-white font-bold">
+            <div className="flex gap-4 items-center">
+              <a href="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                  stroke="currentColor"
+                  className="w-7"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                  />
+                </svg>
+              </a>
+              <span className="font-bold text-lg">Pulsa</span>
+            </div>
+            <button
+              className="text-6xl opacity-0 fade-in mr-2"
+              onClick={handleClickAlert}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="w-7"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5"
+                />
+              </svg>
+            </button>
+          </div>
+          {/* input nomor hp */}
+          <div className="px-4">
+            <label htmlFor="nomor-hp" className="text-sm">
+              Masukkan Nomor Handphone
+            </label>
+            <div className="relative px-1 mt-2">
+              <input
+                type="text"
+                placeholder="Nomor Handphone"
+                className="text-sm w-full border-b py-1 border-slate-400 outline-none px-1"
+                onChange={handleChange}
               />
-            </svg>
-          </a>
-            <span>Pulsa</span>
+              <i className="bx bxs-contact absolute right-1 top-2"></i>
+            </div>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-            />
-          </svg>
+          {/* category */}
+          {validNoHp && !loading ? (
+            <div className="flex gap-1">
+              <span className="w-20 h-8 text-sm flex items-center justify-center">
+                Semua
+              </span>
+              <span className="w-20 h-8 text-sm flex items-center justify-center border-b border-slate-400">
+                Reguler
+              </span>
+              <span className="w-20 h-8 text-sm flex items-center justify-center">
+                Transfer
+              </span>
+              <span className="w-20 h-8 text-sm flex items-center justify-center">
+                Telepon
+              </span>
+              <span className="w-20 h-8 text-sm flex items-center justify-center">
+                SMS
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        {/* input nomor hp */}
-        <div className="px-4">
-          <label htmlFor="nomor-hp" className="text-sm">
-            Masukkan Nomor Handphone
-          </label>
-          <div className="relative px-1 mt-2">
-            <input
-              type="text"
-              placeholder="Nomor Handphone"
-              className="text-sm w-full border-b py-1 border-slate-400 outline-none px-1"
-              onChange={handleChange}
+        {/* pilihan pulsa */}
+        {loading ? (
+          <p className="max-w-sm w-full flex justify-center mt-48 z-10">
+            <ThreeDots
+              visible={true}
+              height="80"
+              width="80"
+              color="blue"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
             />
-            <i className="bx bxs-contact absolute right-1 top-2"></i>
-          </div>
-        </div>
-        {/* category */}
-        {validNoHp && !loading ? (
-          <div className="flex gap-1">
-            <span className="w-20 h-8 text-sm flex items-center justify-center">
-              Semua
-            </span>
-            <span className="w-20 h-8 text-sm flex items-center justify-center border-b border-slate-400">
-              Reguler
-            </span>
-            <span className="w-20 h-8 text-sm flex items-center justify-center">
-              Transfer
-            </span>
-            <span className="w-20 h-8 text-sm flex items-center justify-center">
-              Telepon
-            </span>
-            <span className="w-20 h-8 text-sm flex items-center justify-center">
-              SMS
-            </span>
-          </div>
+          </p>
         ) : (
-          ""
+          pilihanPulsa
         )}
-      </div>
-      {/* pilihan pulsa */}
-      {loading ? (
-        <p className="max-w-sm w-full flex justify-center mt-48 z-10">
-          <ThreeDots
-            visible={true}
-            height="80"
-            width="80"
-            color="blue"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        </p>
-      ) : (
-        pilihanPulsa
-      )}
-      {/* informasi pelanggan */}
-      <div
-        className={`fixed max-w-sm w-full bg-white border h-60 ${
-          click && noHp.length == 12 ? "bottom-0" : "-bottom-60"
-        }  transition-all rounded-t-xl`}
-      >
-        <div className="p-4 flex flex-col justify-between h-full">
-          <p className="text-[14px]">Informasi Pelanggan</p>
-          <div className="flex gap-1 py-4  mx-1">
-            <div>
-              <img src={logoProvider} alt="logo-provider" className="w-20" />
+        {/* informasi pelanggan */}
+        <div
+          className={`fixed max-w-sm w-full bg-white border h-60 ${
+            click && noHp.length == 12 ? "bottom-0" : "-bottom-60"
+          }  transition-all rounded-t-xl`}
+        >
+          <div className="p-4 flex flex-col justify-between h-full">
+            <p className="text-[14px]">Informasi Pelanggan</p>
+            <div className="flex gap-1 py-4  mx-1">
+              <div>
+                <img src={logoProvider} alt="logo-provider" className="w-20" />
+              </div>
+              <div className="flex flex-col text-xs gap-2">
+                <span>{contoh.nama}</span>
+                <span>{contoh.deskripsi}</span>
+                <span className="text-[14px]">{noHp}</span>
+              </div>
             </div>
-            <div className="flex flex-col text-xs gap-2">
-              <span>{contoh.nama}</span>
-              <span>{contoh.deskripsi}</span>
-              <span className="text-[14px]">{noHp}</span>
+            <span className="text-[14px]">Detail Pembayaran</span>
+            <div className="flex justify-between">
+              <span className="text-[14px]">Total Harga</span>
+              <span className="text-[14px] text-red-600">
+                Rp {contoh.harga}
+              </span>
             </div>
+            <button className="bg-blue-600 text-white rounded-xl h-8">
+              Beli Sekarang
+            </button>
           </div>
-          <span className="text-[14px]">Detail Pembayaran</span>
-          <div className="flex justify-between">
-            <span className="text-[14px]">Total Harga</span>
-            <span className="text-[14px] text-red-600">Rp {contoh.harga}</span>
-          </div>
-          <button className="bg-blue-600 text-white rounded-xl h-8">
-            Beli Sekarang
-          </button>
         </div>
       </div>
-    </div>
+      {/* alert */}
+      <div className="flex justify-center">
+        <div
+          className={`fixed max-w-sm w-full border min-h-screen  ${
+            alert ? "top-0" : "-top-full"
+          }  transition-all bg-white`}
+        >
+          <Alert setAlert={handleAlert} />
+        </div>
+      </div>
+    </>
   );
 
   //   const CheckoutProduct = () => {

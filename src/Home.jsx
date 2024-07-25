@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Products } from "./constant/index.jsx";
 import { CartState } from "./Context.jsx";
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [items, setItem] = useState([]);
   const { dispatch, state } = CartState();
-  const {cart} = state;
+  const { cart } = state;
   useEffect(() => {
     setItem(Products);
   }, []);
@@ -17,14 +17,12 @@ const Home = () => {
       type: "ADD_TO_CART",
       payload: product,
     });
-
   };
   const removeFromCart = (product) => {
     dispatch({
       type: "DELETE_FROM_CART",
       payload: product,
     });
-
   };
 
   const buyProduct = (product) => {
@@ -32,7 +30,7 @@ const Home = () => {
       type: "ADD_TO_CART",
       payload: product,
     });
-    navigate('/cart')
+    navigate("/cart");
   };
 
   const categoryGoreng = () => {
@@ -40,15 +38,12 @@ const Home = () => {
     setItem(filterGoreng);
   };
 
-  const categoryAsia = () => {
-    let filterGoreng = Products.filter((item) => item.category == "asia");
-    setItem(filterGoreng);
-  };
 
   const addToCart = (product) => {
-    let isProductInCart = cart.filter((item) => item.id === product.id).length > 0;
-     return isProductInCart
-  }
+    let isProductInCart =
+      cart.filter((item) => item.id === product.id).length > 0;
+    return isProductInCart;
+  };
   return (
     <>
       <div className="flex justify-center">
@@ -84,7 +79,9 @@ const Home = () => {
                       />
                     </svg>
                   </a>
-                  <span className="absolute block top-1 right-2 font-bold">{cart.length}</span>
+                  <span className="absolute block top-1 right-2 font-bold">
+                    {cart.length}
+                  </span>
                 </div>
               </div>
               <div className="px-5 mt-3 relative">
@@ -133,7 +130,7 @@ const Home = () => {
           {/* category */}
           <div className="flex justify-center">
             <div className="w-[94%] flex box-border gap-5 justify-between">
-              <div
+              <button
                 className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden"
                 onClick={() => categoryGoreng()}
               >
@@ -144,8 +141,8 @@ const Home = () => {
                   />
                 </div>
                 <span className="text-xs mt-5">gorengan</span>
-              </div>
-              <div className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
+              </button>
+              <button className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
                 <div className="w-[65px] h-[50px]">
                   <img
                     src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8e133f59-d50f-41b0-bfa7-1a61a074cc8b_tag-image_1608202870005.jpg?fit=crop&w=200&h=200&auto=format"
@@ -153,20 +150,18 @@ const Home = () => {
                   />
                 </div>
                 <span className="text-xs mt-5">minuman</span>
-              </div>
-              <div
-                className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden"
-                onClick={() => categoryAsia()}
-              >
-                <div className="w-[65px] h-[50px]">
+              </button>
+              <Link to="/pulsa" className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
+                <div className="w-[65px] h-[50px] flex items-end justify-center mt-2">
                   <img
-                    src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/5b23658e-522c-438e-ad95-0eca5d5d0c7f_tag-image_1608203075313.jpg?fit=crop&w=200&h=200&auto=format"
-                    alt="makanan asia"
+                    src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721891437/logo-pulsa2_xyutei.png"
+                    alt="Pulsa"
+                    className="w-[25px]"
                   />
                 </div>
-                <span className="text-xs mt-5">Asia</span>
-              </div>
-              <div className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
+                <span className="text-xs mt-3">Pulsa</span>
+              </Link>
+              <button className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
                 <div className="w-[65px] h-[50px]">
                   <img
                     src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1715865605/soundSystem_b5deu0.jpg"
@@ -174,8 +169,10 @@ const Home = () => {
                     className="w-full h-[50px] mt-3"
                   />
                 </div>
-                  <span className="text-xs mt-5"><a href="/pulsa">Music</a></span>
-              </div>
+                <span className="text-xs mt-5">
+                  Music
+                </span>
+              </button>
             </div>
           </div>
           {/* product */}
@@ -211,14 +208,25 @@ const Home = () => {
                           </svg>
                         </div>
                         {/* keranjang */}
-                        <div className={`w-8 h-8 flex justify-center items-center border shadow rounded-xl cursor-pointer ${addToCart(product) ? 'bg-slate-700' : 'bg-white'}`} onClick={() => addToCart(product) ? removeFromCart(product) : addProductToCart(product)}>
+                        <div
+                          className={`w-8 h-8 flex justify-center items-center border shadow rounded-xl cursor-pointer ${
+                            addToCart(product) ? "bg-slate-700" : "bg-white"
+                          }`}
+                          onClick={() =>
+                            addToCart(product)
+                              ? removeFromCart(product)
+                              : addProductToCart(product)
+                          }
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className={`w-5 ${addToCart(product) ? 'text-white' : 'text-black'}`}
+                            className={`w-5 ${
+                              addToCart(product) ? "text-white" : "text-black"
+                            }`}
                           >
                             <path
                               strokeLinecap="round"
@@ -239,7 +247,15 @@ const Home = () => {
                     </div>
                     {/* status */}
                     <div>
-                      <span className={`${product.status == "Tersedia" ? "text-green-800" : "text-red-700"} font-bold`}>{product.status}</span>
+                      <span
+                        className={`${
+                          product.status == "Tersedia"
+                            ? "text-green-800"
+                            : "text-red-700"
+                        } font-bold`}
+                      >
+                        {product.status}
+                      </span>
                     </div>
                     {/* harga */}
                     <div className="flex items-center">
