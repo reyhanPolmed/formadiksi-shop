@@ -118,7 +118,7 @@ const Pulsa = () => {
         {/* header input */}
         <div className="fixed max-w-sm w-full flex flex-col gap-5 bg-white">
           {/* navbar */}
-          <div className="flex justify-between px-2 h-10 items-center bg-blue-600 text-white font-bold">
+          <div className="flex justify-between px-2 h-14 items-center bg-blue-600 text-white font-bold">
             <div className="flex gap-4 items-center">
               <a href="/">
                 <svg
@@ -248,7 +248,7 @@ const Pulsa = () => {
       <div className="flex justify-center">
         <div
           className={`fixed max-w-sm w-full border min-h-screen  ${
-            alert ? "bottom-0" : "-bottom-full"
+            alert ? "bottom-0" : "-bottom-[800px]"
           }  transition-all bg-white`}
         >
           <Alert setAlert={handleAlert} />
