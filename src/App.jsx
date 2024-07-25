@@ -3,7 +3,6 @@ import Home from "./Home.jsx";
 import Cart from "./Cart.jsx";
 import "./App.css";
 import Pulsa from "./Pulsa.jsx";
-import Alert from "./component/Alert.jsx";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/cart" element={<Cart/>} replace/>
         <Route path="/pulsa" element={<Pulsa/>} replace/>
-        <Route path="/alert" element={<Alert/>} replace/>
       </Routes>
     </BrowserRouter>
   );
