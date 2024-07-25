@@ -61,3 +61,49 @@ export const Products = [
         status: "Habis"
     },
 ]
+
+export const PulsaTelkomsel = [
+    {
+        nama : "pulsa 5 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +7hari",
+        harga : "7.000"
+    },
+    {
+        nama : "pulsa 10 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +15hari",
+        harga : "12.000"
+    },
+    {
+        nama : "pulsa 15 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +20hari",
+        harga : "17.000"
+    },
+    {
+        nama : "pulsa 20 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +25hari",
+        harga : "22.000"
+    },
+]
+
+export const PulsaAxis = [
+    {
+        nama : "pulsa Axis 5 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +7hari",
+        harga : "7.000"
+    },
+    {
+        nama : "pulsa Axis 10 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +15hari",
+        harga : "12.000"
+    },
+    {
+        nama : "pulsa Axis 15 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +20hari",
+        harga : "17.000"
+    },
+    {
+        nama : "pulsa Axis 20 Ribu",
+        deskripsi : "satset 1-3 detik sukses Masa Aktif +25hari",
+        harga : "22.000"
+    },
+]

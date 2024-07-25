@@ -174,7 +174,7 @@ const Home = () => {
                     className="w-full h-[50px] mt-3"
                   />
                 </div>
-                <span className="text-xs mt-5">Music</span>
+                  <span className="text-xs mt-5"><a href="/pulsa">Music</a></span>
               </div>
             </div>
           </div>
