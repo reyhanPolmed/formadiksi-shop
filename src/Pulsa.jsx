@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PulsaTelkomsel, PulsaAxis } from "./constant";
+import { PulsaTelkomsel, PulsaAxis, PulsaXl, PulsaThree, PulsaIndosat } from "./constant";
 import { ThreeDots } from "react-loader-spinner";
 import Alert from "./component/Alert";
 const Pulsa = () => {
@@ -29,13 +29,18 @@ const Pulsa = () => {
 
   let pilihanPulsa;
   let logoProvider;
-  const nomorAxis =
-    noHp.includes("0831") || (noHp.includes("0838") && noHp.length == 12);
-  const nomorTelkomsel =
-    noHp.includes("0823") || (noHp.includes("0852") && noHp.length == 12);
-  console.log(nomorAxis);
+  const Axis =
+    noHp.includes("0831") || noHp.includes("0832") || noHp.includes("0833") || noHp.includes("0838") && noHp.length == 12;
+  const Telkomsel =
+    noHp.includes("0823") ||  noHp.includes("0851") ||  noHp.includes("0853") ||  noHp.includes("0811") ||  noHp.includes("0812") ||  noHp.includes("0813") ||  noHp.includes("0821") ||  noHp.includes("0822") || noHp.includes("0852") && noHp.length == 12;
+  const Xl =
+    noHp.includes("0817") ||  noHp.includes("0818") ||  noHp.includes("0819") ||  noHp.includes("0859") ||  noHp.includes("0877") ||  noHp.includes("0878")  && noHp.length == 12;
+  const Indosat =
+    noHp.includes("0857") ||  noHp.includes("0856")  && noHp.length == 12;
+  const Three =
+    noHp.includes("0895") ||  noHp.includes("0896") || noHp.includes("0897") || noHp.includes("0898") || noHp.includes("0899")  && noHp.length == 12;
 
-  if (nomorTelkomsel) {
+  if (Telkomsel) {
     pilihanPulsa = (
       <div className="max-w-sm w-full flex flex-col gap-5 overflow-hidden">
         <div className="mt-44">
@@ -68,7 +73,7 @@ const Pulsa = () => {
     );
     logoProvider =
       "https://res.cloudinary.com/dfcpydoq8/image/upload/v1721822588/logo-telkomsel_xhjnx7.png";
-  } else if (nomorAxis) {
+  } else if (Axis) {
     pilihanPulsa = (
       <div className="max-w-sm w-full flex flex-col gap-5 overflow-hidden">
         <div className="mt-44">
@@ -101,15 +106,131 @@ const Pulsa = () => {
     );
     logoProvider =
       "https://res.cloudinary.com/dfcpydoq8/image/upload/v1721884287/pngegg_islu6c.png";
+  } else if (Xl) {
+    pilihanPulsa = (
+      <div className="max-w-sm w-full flex flex-col gap-5 overflow-hidden">
+        <div className="mt-44">
+          <div className="flex flex-col ">
+            {validNoHp
+              ? PulsaXl.map((item, index) => (
+                  <div
+                    className="flex gap-4 py-4 border-b border-slate-400 mx-1 items-center cursor-pointer"
+                    onClick={() => handleClick({ item })}
+                    key={index}
+                  >
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976245/pngegg_1_roqgfn.png"
+                        alt="logo-axis"
+                        className="w-14 ml-2"
+                      />
+                    </div>
+                    <div className="flex flex-col text-xs gap-1">
+                      <span>{item.nama}</span>
+                      <span>{item.deskripsi}</span>
+                      <span>Rp. {item.harga}</span>
+                    </div>
+                  </div>
+                ))
+              : ""}
+          </div>
+        </div>
+      </div>
+    );
+    logoProvider =
+      "https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976245/pngegg_1_roqgfn.png";
+  } else if (Indosat) {
+    pilihanPulsa = (
+      <div className="max-w-sm w-full flex flex-col gap-5 overflow-hidden">
+        <div className="mt-44">
+          <div className="flex flex-col ">
+            {validNoHp
+              ? PulsaIndosat.map((item, index) => (
+                  <div
+                    className="flex gap-4 py-4 border-b border-slate-400 mx-1 items-center cursor-pointer"
+                    onClick={() => handleClick({ item })}
+                    key={index}
+                  >
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976517/logo-indosat_qah2wy.png"
+                        alt="logo-Indosat"
+                        className="w-14 ml-2"
+                      />
+                    </div>
+                    <div className="flex flex-col text-xs gap-1">
+                      <span>{item.nama}</span>
+                      <span>{item.deskripsi}</span>
+                      <span>Rp. {item.harga}</span>
+                    </div>
+                  </div>
+                ))
+              : ""}
+          </div>
+        </div>
+      </div>
+    );
+    logoProvider =
+      "https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976517/logo-indosat_qah2wy.png";
+  } else if (Three) {
+    pilihanPulsa = (
+      <div className="max-w-sm w-full flex flex-col gap-5 overflow-hidden">
+        <div className="mt-44">
+          <div className="flex flex-col ">
+            {validNoHp
+              ? PulsaThree.map((item, index) => (
+                  <div
+                    className="flex gap-4 py-4 border-b border-slate-400 mx-1 items-center cursor-pointer"
+                    onClick={() => handleClick({ item })}
+                    key={index}
+                  >
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976638/Logo_Three_3_Format_PNG_bdem2x.png"
+                        alt="logo-axis"
+                        className="w-14 ml-2"
+                      />
+                    </div>
+                    <div className="flex flex-col text-xs gap-1">
+                      <span>{item.nama}</span>
+                      <span>{item.deskripsi}</span>
+                      <span>Rp. {item.harga}</span>
+                    </div>
+                  </div>
+                ))
+              : ""}
+          </div>
+        </div>
+      </div>
+    );
+    logoProvider =
+      "https://res.cloudinary.com/dfcpydoq8/image/upload/v1721976638/Logo_Three_3_Format_PNG_bdem2x.png";
   }
 
   const handleChange = (e) => {
     setNoHp(e.target.value);
-    setLoading(true);
+    if(e.target.value.length == 12) {
+      setLoading(true);
+    }
     // Mulai timeout baru setiap kali input berubah
     setTimeout(() => {
       setLoading(false);
     }, 1500);
+  };
+
+  const handleBeli = () => {
+    // Membuat pesan WhatsApp
+    let message = "*Pembelian Pulsa* \n\n";
+
+    // informasi pemesan
+    message += `*Nama:* ${contoh.nama} \n`;
+    message += `*Nomor Telepon:* ${noHp} \n`;
+    message += `*Harga:* ${contoh.harga} \n`;
+
+    // Mengarahkan ke aplikasi WhatsApp dengan pesan otomatis
+    window.location.href = `https://wa.me/6282383272872/?text=${encodeURIComponent(
+      message
+    )}`;
   };
 
   let content = (
@@ -118,7 +239,7 @@ const Pulsa = () => {
         {/* header input */}
         <div className="fixed max-w-sm w-full flex flex-col gap-5 bg-white">
           {/* navbar */}
-          <div className="flex justify-between px-2 h-14 items-center bg-blue-600 text-white font-bold">
+          <div className="flex justify-between px-2 h-14 items-center bg-slate-900 text-white font-bold">
             <div className="flex gap-4 items-center">
               <a href="/">
                 <svg
@@ -136,7 +257,7 @@ const Pulsa = () => {
                   />
                 </svg>
               </a>
-              <span className="font-bold text-lg">Pulsa</span>
+              <span className="font-bold text-lg">PulsaDiksi</span>
             </div>
             <button
               className="text-6xl opacity-0 fade-in mr-2"
@@ -170,7 +291,7 @@ const Pulsa = () => {
                 className="text-sm w-full border-b py-1 border-slate-400 outline-none px-1"
                 onChange={handleChange}
               />
-              <i className="bx bxs-contact absolute right-1 top-2"></i>
+              <i className="bx bxs-contact absolute right-1 text-slate-600 text-xl"></i>
             </div>
           </div>
           {/* category */}
@@ -238,7 +359,7 @@ const Pulsa = () => {
                 Rp {contoh.harga}
               </span>
             </div>
-            <button className="bg-blue-600 text-white rounded-xl h-8">
+            <button className="bg-slate-900 text-white rounded-xl h-8" onClick={handleBeli}>
               Beli Sekarang
             </button>
           </div>
@@ -257,51 +378,7 @@ const Pulsa = () => {
     </>
   );
 
-  //   const CheckoutProduct = () => {
-  //     const stok = cart.filter((item) => item.status == "Habis").length > 0;
-  //     if(stok) {
-  //       setPesanStok("Mohon periksa stok item yang anda beli")
-  //       return
-  //     } else {
-  //       setPesanStok("")
-  //     }
 
-  //     if (cart.length === 0) {
-  //       console.error("Error: Product data not loaded.");
-  //       return;
-  //     } else if (!nama && !alamat) {
-  //       setPesanError("lengkapi data anda!");
-  //       return;
-  //     }
-
-  //     // Mendapatkan nama produk
-
-  //     // Membuat pesan WhatsApp
-  //     let message = "Halo! Saya ingin membuat pesanan \n";
-
-  //     // informasi pemesan
-  //     message += `nama: ${nama} \n`;
-  //     message += `alamat: ${alamat} \n`;
-
-  //     // Menambahkan nama produk ke pesan
-  //     message += "\nDaftar Pesanan: \n";
-  //     message += cart
-  //       .map(
-  //         (item) =>
-  //           `-${item.name} ${item.deskripsi} x ${item.qty} : Rp ${
-  //             item.price * item.qty
-  //           } \n`
-  //       )
-  //       .join("");
-
-  //     // Menambahkan total harga pesanan ke pesan
-  //     message += "\nTotal Yang Harus di Bayar : Rp " + cartTotalAmount;
-
-  //     // Mengarahkan ke aplikasi WhatsApp dengan pesan otomatis
-  //     window.location.href = `https://wa.me/6285372117078/?text=${encodeURIComponent(
-  //       message
-  //     )}`;
-  //   };
   return content;
 };
 

@@ -1,109 +1,421 @@
 export const Products = [
-    {   
-        id: 1,
-        name : "Risol",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category : "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
-    },
-    {   
-        id : 2,
-        name : "Tahu Isi",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis"
-    },
-    {   
-        id : 3,
-        name : "Bakwan",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
-    },
-    {   
-        id : 4,
-        name : "Pisang Goreng",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis",
-    },
-    // {   
-    //     id : 4,
-    //     name : "Dadar",
-    //     deskripsi : "(3pcs Rp 5.000)",
-    //     img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
-    //     price : "5000",
-    //     category: "gorengan",
-    //     // status: "Tersedia",
-    //     status: "Habis",
-    // },
+  {
+    id: 1,
+    name: "Risol",
+    deskripsi: "(3pcs Rp 5.000)",
+    img: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+    price: "5000",
+    category: "gorengan",
+    // status: "Tersedia",
+    status: "Habis",
+  },
+  {
+    id: 2,
+    name: "Tahu Isi",
+    deskripsi: "(3pcs Rp 5.000)",
+    img: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+    price: "5000",
+    category: "gorengan",
+    // status: "Tersedia",
+    status: "Habis",
+  },
+  {
+    id: 3,
+    name: "Bakwan",
+    deskripsi: "(3pcs Rp 5.000)",
+    img: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+    price: "5000",
+    category: "gorengan",
+    // status: "Tersedia",
+    status: "Habis",
+  },
+  {
+    id: 4,
+    name: "Pisang Goreng",
+    deskripsi: "(3pcs Rp 5.000)",
+    img: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+    price: "5000",
+    category: "gorengan",
+    // status: "Tersedia",
+    status: "Habis",
+  },
+  // {
+  //     id : 4,
+  //     name : "Dadar",
+  //     deskripsi : "(3pcs Rp 5.000)",
+  //     img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1716120072/dadar_kfp9js.jpg",
+  //     price : "5000",
+  //     category: "gorengan",
+  //     // status: "Tersedia",
+  //     status: "Habis",
+  // },
 
-    {   
-        id : 5,
-        name : "Gorengan campur",
-        deskripsi : "(3pcs Rp 5.000)",
-        img : "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
-        price : "5000",
-        category: "gorengan",
-        // status: "Tersedia",
-        status: "Habis"
-    },
-]
+  {
+    id: 5,
+    name: "Gorengan campur",
+    deskripsi: "(3pcs Rp 5.000)",
+    img: "https://res.cloudinary.com/dfcpydoq8/image/upload/v1715497216/gorengan_xoeds9.png",
+    price: "5000",
+    category: "gorengan",
+    // status: "Tersedia",
+    status: "Habis",
+  },
+];
 
+// provider
 export const PulsaTelkomsel = [
-    {
-        nama : "pulsa 5 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +7hari",
-        harga : "7.000"
-    },
-    {
-        nama : "pulsa 10 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +15hari",
-        harga : "12.000"
-    },
-    {
-        nama : "pulsa 15 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +20hari",
-        harga : "17.000"
-    },
-    {
-        nama : "pulsa 20 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +25hari",
-        harga : "22.000"
-    },
-]
+  {
+    nama: "pulsa Telkomsel 5 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "satset 1-3 detik sukses Masa Aktif +7hari",
+    harga: "7.000",
+  },
+  {
+    nama: "pulsa Telkomsel 10 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "satset 1-3 detik sukses Masa Aktif +15hari",
+    harga: "12.000",
+  },
+  {
+    nama: "pulsa Telkomsel 15 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "satset 1-3 detik sukses Masa Aktif +20hari",
+    harga: "17.000",
+  },
+  {
+    nama: "pulsa Telkomsel 20 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "satset 1-3 detik sukses Masa Aktif +25hari",
+    harga: "22.000",
+  },
+  {
+    nama: "pulsa Telkomsel 25 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "satset 1-3 detik sukses Masa Aktif +25hari",
+    harga: "27.000",
+  },
+  {
+    nama: "pulsa Telkomsel 30 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "32.000",
+  },
+  {
+    nama: "pulsa Telkomsel 35 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "37.000",
+  },
+  {
+    nama: "pulsa Telkomsel 40 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "42.000",
+  },
+  {
+    nama: "pulsa Telkomsel 45 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "47.000",
+  },
+  {
+    nama: "pulsa Telkomsel 50 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "52.000",
+  },
+  {
+    nama: "pulsa Telkomsel 55 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "57.000",
+  },
+  {
+    nama: "pulsa Telkomsel 60 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "62.000",
+  },
+  {
+    nama: "pulsa Telkomsel 65 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "67.000",
+  },
+  {
+    nama: "pulsa Telkomsel 70 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "72.000",
+  },
+  {
+    nama: "pulsa Telkomsel 75 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "77.000",
+  },
+  {
+    nama: "pulsa Telkomsel 80 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "82.000",
+  },
+  {
+    nama: "pulsa Telkomsel 85 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "87.000",
+  },
+  {
+    nama: "pulsa Telkomsel 90 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "92.000",
+  },
+  {
+    nama: "pulsa Telkomsel 95 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "97.000",
+  },
+  {
+    nama: "pulsa Telkomsel 100 Ribu",
+    provider: "Telkomsel",
+    deskripsi: "",
+    harga: "102.000",
+  },
+];
 
 export const PulsaAxis = [
-    {
-        nama : "pulsa Axis 5 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +7hari",
-        harga : "7.000"
-    },
-    {
-        nama : "pulsa Axis 10 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +15hari",
-        harga : "12.000"
-    },
-    {
-        nama : "pulsa Axis 15 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +20hari",
-        harga : "17.000"
-    },
-    {
-        nama : "pulsa Axis 20 Ribu",
-        deskripsi : "satset 1-3 detik sukses Masa Aktif +25hari",
-        harga : "22.000"
-    },
-]
+  {
+    nama: "pulsa Axis 5 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "7.000",
+  },
+  {
+    nama: "pulsa Axis 10 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "12.000",
+  },
+  {
+    nama: "pulsa Axis 15 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "17.000",
+  },
+  {
+    nama: "pulsa Axis 25 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "27.000",
+  },
+  {
+    nama: "pulsa Axis 30 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "32.000",
+  },
+  {
+    nama: "pulsa Axis 50 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "52.000",
+  },
+  {
+    nama: "pulsa Axis 100 Ribu",
+    provider: "Axis",
+    deskripsi: "",
+    harga: "102.000",
+  },
+];
+
+export const PulsaXl = [
+  {
+    nama: "pulsa XL 5 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "7.000",
+  },
+  {
+    nama: "pulsa XL 10 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "12.000",
+  },
+  {
+    nama: "pulsa XL 15 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "17.000",
+  },
+  {
+    nama: "pulsa XL 25 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "27.000",
+  },
+  {
+    nama: "pulsa XL 30 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "32.000",
+  },
+  {
+    nama: "pulsa XL 50 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "52.000",
+  },
+  {
+    nama: "pulsa XL 100 Ribu",
+    provider: "XL",
+    deskripsi: "",
+    harga: "102.000",
+  },
+];
+
+export const PulsaIndosat = [
+  {
+    nama: "pulsa Indosat 5 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "7.000",
+  },
+  {
+    nama: "pulsa Indosat 10 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "12.000",
+  },
+  {
+    nama: "pulsa Indosat 15 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "17.000",
+  },
+  {
+    nama: "pulsa Indosat 20 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "22.000",
+  },
+  {
+    nama: "pulsa Indosat 25 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "27.000",
+  },
+  {
+    nama: "pulsa Indosat 30 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "32.000",
+  },
+  {
+    nama: "pulsa Indosat 40 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "42.000",
+  },
+  {
+    nama: "pulsa Indosat 50 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "52.000",
+  },
+  {
+    nama: "pulsa Indosat 60 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "62.000",
+  },
+  {
+    nama: "pulsa Indosat 70 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "72.000",
+  },
+  {
+    nama: "pulsa Indosat 80 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "82.000",
+  },
+  {
+    nama: "pulsa Indosat 90 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "92.000",
+  },
+  {
+    nama: "pulsa Indosat 100 Ribu",
+    provider: "Indosat",
+    deskripsi: "",
+    harga: "102.000",
+  },
+];
+
+export const PulsaThree = [
+  {
+    nama: "pulsa Three 5 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "7.000",
+  },
+  {
+    nama: "pulsa Three 10 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "12.000",
+  },
+  {
+    nama: "pulsa Three 15 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "17.000",
+  },
+  {
+    nama: "pulsa Three 20 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "22.000",
+  },
+  {
+    nama: "pulsa Three 25 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "27.000",
+  },
+  {
+    nama: "pulsa Three 30 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "32.000",
+  },
+  {
+    nama: "pulsa Three 40 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "42.000",
+  },
+  {
+    nama: "pulsa Three 50 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "52.000",
+  },
+  {
+    nama: "pulsa Three 75 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "77.000",
+  },
+  {
+    nama: "pulsa Three 100 Ribu",
+    provider: "Three",
+    deskripsi: "",
+    harga: "102.000",
+  },
+];

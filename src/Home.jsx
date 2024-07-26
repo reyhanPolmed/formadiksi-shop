@@ -134,22 +134,23 @@ const Home = () => {
                 className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden"
                 onClick={() => categoryGoreng()}
               >
-                <div className="w-[65px] h-[50px]">
+                <div className="w-[65px] h-[50px] mt-2">
                   <img
-                    src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/93cd9871-814f-4121-94d9-96430c3111a4_tag-image_1608202898934.jpg?fit=crop&w=200&h=200&auto=format"
+                    src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721979889/logo-gorengan_rh7sw8.png"
                     alt="gorengan"
+                    className="h-full"
                   />
                 </div>
-                <span className="text-xs mt-5">gorengan</span>
+                <span className="text-xs mt-3">gorengan</span>
               </button>
               <button className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
-                <div className="w-[65px] h-[50px]">
+                <div className="w-[65px] h-[50px] mt-2">
                   <img
-                    src="https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/8e133f59-d50f-41b0-bfa7-1a61a074cc8b_tag-image_1608202870005.jpg?fit=crop&w=200&h=200&auto=format"
+                    src="https://res.cloudinary.com/dfcpydoq8/image/upload/v1721980292/logo-minuman_xfqcem.png"
                     alt="minuman"
                   />
                 </div>
-                <span className="text-xs mt-5">minuman</span>
+                <span className="text-xs mt-3">minuman</span>
               </button>
               <Link to="/pulsa" className="h-[95px] flex flex-col items-center rounded-[10px] overflow-hidden">
                 <div className="w-[65px] h-[50px] flex items-end justify-center mt-2">
